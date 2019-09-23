@@ -1,7 +1,10 @@
 import React from 'react';
 import './index.css';
+import './ProductDelete.css';
+import './ProductName.css';
+import './ProductPrice.css';
 
-const Product = ({name, price}) => (
+const Product = ({name, price, onDelete}) => (
     <div className="Product">
         <p className="ProductName">
             {name}
@@ -9,6 +12,9 @@ const Product = ({name, price}) => (
         <p className="ProductPrice">
             {price}
         </p>
+        <button className="ProductDelete" onClick={onDelete}>
+            X
+        </button>
     </div>
 );
 
