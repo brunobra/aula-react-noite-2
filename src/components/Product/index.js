@@ -10,7 +10,7 @@ const Product = ({name, price, onDelete}) => (
             {name}
         </p>
         <p className="ProductPrice">
-            {price}
+            {price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
         </p>
         <button className="ProductDelete" onClick={onDelete}>
             X

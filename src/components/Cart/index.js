@@ -4,7 +4,7 @@ import CartHeader from '../CartHeader';
 import Product from '../Product';
 import CartFooter from '../CartFooter';
 
-const Cart = ({products, onDeleteProduct}) => {
+const Cart = ({products, onDeleteProduct, onAddProduct}) => {
     const getTotalPrice = () => {
         let total = 0;
 
@@ -12,7 +12,7 @@ const Cart = ({products, onDeleteProduct}) => {
             total = total + i.price;
         });
 
-        return total;
+        return total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
     };
 
     return (
@@ -29,7 +29,9 @@ const Cart = ({products, onDeleteProduct}) => {
                     onDelete={() => onDeleteProduct(product.id)}
                 />
             ))}
-            <CartFooter />
+            <CartFooter
+                onAddProduct={onAddProduct}
+            />
         </div>
     )
 };

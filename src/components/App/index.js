@@ -1,35 +1,46 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import './index.css';
 import Cart from '../Cart';
 
+import {
+  addProduct,
+  removeProduct
+} from '../../flux/actions';
+
 class App extends React.Component {
-  state = {
-    products: [
-      {
-        id: 1,
-        name: 'Produto',
-        price: 10.0
-      }
-    ]
+  deleteProduct (productId) {
+    
   }
 
-  deleteProduct (productId) {
-    this.setState({
-      products: this.state.products.filter((product) => product.id !== productId)
-    });
+  addProduct (product) {
+    
   }
 
   render () {
-    const { products = [] } = this.state;
+    console.log(this.props);
+    const { product = {} } = this.props;
+    const { products = [] } = product;
+
     return (
       <div className="App">
         <Cart
           products={products}
           onDeleteProduct={this.deleteProduct.bind(this)}
+          onAddProduct={this.addProduct.bind(this)}
         />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  product: state.product
+});
+
+const mapActionsToProps = {
+  addProduct,
+  removeProduct
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(App);

@@ -5,8 +5,12 @@ const CartHeader = ({title, total}) => (
     <div
         className="CartHeader"
     >
-        <p>{title}</p>
-        <p>{total}</p>
+        <p className="CartTitle">
+            {title}
+        </p>
+        <p className="CartTotal">
+            {total}
+        </p>
     </div>
 );
 
